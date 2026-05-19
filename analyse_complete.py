@@ -48,6 +48,14 @@ if not csv_path.exists():
 df = pd.read_csv(csv_path)
 
 print(f"[OK] Fichier importé: {df.shape[0]} lignes x {df.shape[1]} colonnes")
+
+# Traiter les valeurs manquantes
+missing_before = df.isnull().sum().sum()
+df = df.dropna()
+missing_after = len(df)
+print(f"[OK] Données manquantes supprimées: {missing_before} valeurs")
+print(f"[OK] Lignes restantes: {missing_after}")
+
 print(f"\nAperçu:")
 print(df.head(3))
 print(f"\nInfo:")

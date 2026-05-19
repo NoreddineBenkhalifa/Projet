@@ -1,0 +1,70 @@
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║          RAPPORT FINAL - CLASSIFICATION D'ASSURANCE AUTOMOBILE            ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+1. OBJECTIF
+   Prédire si un client fera une demande d'indemnisation (binaire: 0/1)
+
+2. DONNÉES
+   ├─ Total: 8,149 clients
+   ├─ Features: 15
+   ├─ Classes: 0 (5,613 | 68.9%)
+   │           1 (2,536 | 31.1%)
+   └─ Train/Test: 5704 / 2445
+
+3. PRÉPARATION
+   ├─ Suppression: id, postal_code
+   ├─ Encodage: 5 colonnes catégorielles
+   └─ Normalisation: StandardScaler
+
+4. VARIABLES PERTINENTES (Corrélation avec outcome)
+   ├─ 1. vehicle_year: 0.2901
+   ├─ 2. annual_mileage: 0.1849
+   ├─ 3. gender: 0.0986
+   ├─ 4. vehicle_type: 0.0028
+   └─ 5. speeding_violations: -0.0087
+
+5. MEILLEUR MODÈLE: Logistic Regression
+   ├─ Accuracy (Test): 0.8397
+   ├─ Accuracy (CV): 0.8424 ± 0.0054
+   ├─ Precision: 0.7483
+   ├─ Recall: 0.7306
+   └─ F1-Score: 0.7394
+
+6. INTERPRÉTATION
+   ├─ 84.0% des prédictions sont correctes
+   ├─ 74.8% des cas prédits positifs sont vrais positifs
+   └─ 73.1% des cas positifs réels sont détectés
+
+7. RÉGRESSION LOGISTIQUE - EXPLICATION
+   ├─ Hypothèse:
+   │  log(p(y=1|x)/p(y=0|x)) = w₀ + Σ(wᵢxᵢ)
+   │
+   ├─ Minimisation:
+   │  • Algorithme: Descente de gradient ou Newton-Raphson
+   │  • Fonction de coût: Maximum de vraisemblance
+   │
+   └─ Apprentissage:
+      • Paramètres estimés: Coefficients (w) et intercept (w₀)
+      • Méthode: Optimisation itérative
+
+8. TOUS LES MODÈLES (Classement par Accuracy CV)
+   1. Logistic Regression          0.8424
+   2. KNN (k=7)                    0.8120
+   3. KNN (k=5)                    0.8081
+   4. KNN (k=3)                    0.8017
+   5. Perceptron                   0.7714
+
+9. FICHIERS GÉNÉRÉS
+   ├─ car_insurance_analysis.py - Script principal
+   ├─ best_model.pkl - Modèle entraîné
+   ├─ scaler.pkl - Normaliseur
+   ├─ label_encoders.pkl - Encodeurs
+   ├─ histogrammes_variables.png
+   ├─ correlation_matrix.png
+   ├─ confusion_matrix.png
+   ├─ model_comparison.png
+   └─ rapport_final.txt - Ce rapport
+
+╚══════════════════════════════════════════════════════════════════════════╝
