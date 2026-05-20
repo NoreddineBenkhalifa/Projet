@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Présentation Projet Science des Données - Assurance Auto</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/league.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/simple.css">
     <style>
         .reveal .slides section {
             text-align: left;
         }
         .reveal .slides section h2 {
-            color: #00d1b2;
+            color: #2c3e50;
             text-transform: none;
-            border-bottom: 2px solid #00d1b2;
+            border-bottom: 2px solid #2c3e50;
             padding-bottom: 10px;
         }
         .highlight {
-            color: #00d1b2;
+            color: #c0392b;
             font-weight: bold;
         }
         .stats-box {
-            background: rgba(0, 209, 178, 0.1);
+            background: #f8f9fa;
             padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #00d1b2;
+            border-radius: 5px;
+            border-left: 5px solid #2c3e50;
         }
         ul li {
             margin-bottom: 10px;
@@ -36,14 +36,14 @@
         <div class="slides">
             
             <!-- Slide 1: Titre -->
-            <section data-background-gradient="linear-gradient(to bottom, #1a1a1a, #2c3e50)">
-                <h1 style="font-size: 2.5em;">Science des Données</h1>
-                <h3 style="color: #00d1b2;">Classification Supervisée : Assurance Automobile</h3>
-                <p style="margin-top: 50px; font-size: 0.8em;">
-                    <strong>Étudiant :</strong> Samuel<br>
-                    <strong>Sujet :</strong> Prédiction de réclamations (Outcome)<br>
-                    <strong>Date :</strong> 20 Mai 2026
-                </p>
+            <section style="text-align: center;">
+                <h1 style="font-size: 2.2em; color: #2c3e50;">Projet Science des données</h1>
+                <h3 style="color: #7f8c8d;">Classification Supervisée : Assurance Automobile</h3>
+                <div style="margin-top: 60px; font-size: 0.8em; border-top: 1px solid #ccc; padding-top: 20px;">
+                    <strong>Étudiants :</strong><br>
+                    Nor-Eddine Benkhalifa & Samuel Fortier<br><br>
+                    <strong>Date :</strong> 22 Mai 2026
+                </div>
             </section>
 
             <!-- Slide 2: Objectif -->
@@ -105,7 +105,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background: rgba(0, 209, 178, 0.2);">
+                        <tr style="background: rgba(44, 62, 80, 0.1);">
                             <td><strong>Régression Logistique</strong></td>
                             <td><strong>84.09%</strong></td>
                         </tr>
@@ -136,7 +136,7 @@
             </section>
 
             <!-- Slide 8: Conclusion -->
-            <section data-background-gradient="linear-gradient(to bottom, #2c3e50, #1a1a1a)">
+            <section>
                 <h2>7. Conclusion</h2>
                 <ul>
                     <li>Objectif atteint avec une excellente précision de <span class="highlight">84%</span>.</li>
@@ -154,7 +154,7 @@
         Reveal.initialize({
             hash: true,
             slideNumber: 'c/t',
-            transition: 'convex'
+            transition: 'fade'
         });
     </script>
 </body>
