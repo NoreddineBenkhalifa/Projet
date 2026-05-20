@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Projet Science des Données - Assurance Auto</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/league.css">
+    <style>
+        .reveal .slides section {
+            text-align: left;
+        }
+        .reveal .slides section h2 {
+            color: #00d1b2;
+            text-transform: none;
+            border-bottom: 2px solid #00d1b2;
+            padding-bottom: 10px;
+        }
+        .highlight {
+            color: #00d1b2;
+            font-weight: bold;
+        }
+        .stats-box {
+            background: rgba(0, 209, 178, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #00d1b2;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Titre -->
+            <section data-background-gradient="linear-gradient(to bottom, #1a1a1a, #2c3e50)">
+                <h1 style="font-size: 2.5em;">Science des Données</h1>
+                <h3 style="color: #00d1b2;">Classification Supervisée : Assurance Automobile</h3>
+                <p style="margin-top: 50px; font-size: 0.8em;">
+                    <strong>Étudiant :</strong> Samuel<br>
+                    <strong>Sujet :</strong> Prédiction de réclamations (Outcome)<br>
+                    <strong>Date :</strong> 20 Mai 2026
+                </p>
+            </section>
+
+            <!-- Slide 2: Objectif -->
+            <section>
+                <h2>1. Objectif du Projet</h2>
+                <ul>
+                    <li>Placer les données dans un contexte de <span class="highlight">classification supervisée</span>.</li>
+                    <li>Prédire si un client fera une demande d'indemnisation (<span class="highlight">Outcome = 1</span>).</li>
+                    <li>Identifier les facteurs de risque influençant les réclamations.</li>
+                    <li>Fournir un modèle robuste pour la mise en production.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 3: Les Données -->
+            <section>
+                <h2>2. Exploration des Données</h2>
+                <div class="stats-box">
+                    <ul>
+                        <li><span class="highlight">Taille :</span> 10 000 échantillons.</li>
+                        <li><span class="highlight">Variables :</span> 18 colonnes (17 caractéristiques + 1 cible).</li>
+                        <li><span class="highlight">Types :</span> Mélange de numériques et catégorielles (Education, Income, etc.).</li>
+                        <li><span class="highlight">Distribution :</span> 31.3% de réclamations (Outcome=1).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Slide 4: Préparation -->
+            <section>
+                <h2>3. Préparation (Data Cleaning)</h2>
+                <ul>
+                    <li><span class="highlight">Nettoyage :</span> Suppression des colonnes non-pertinentes (ID, Code Postal).</li>
+                    <li><span class="highlight">Valeurs manquantes :</span> Imputation par la <span class="highlight">médiane</span> (Credit Score, Annual Mileage).</li>
+                    <li><span class="highlight">Valeurs aberrantes :</span> Correction de 5 anomalies majeures dans <em>speeding_violations</em>.</li>
+                    <li><span class="highlight">Transformation :</span> Encodage (LabelEncoder) et Normalisation (StandardScaler).</li>
+                </ul>
+            </section>
+
+            <!-- Slide 5: Corrélations -->
+            <section>
+                <h2>4. Facteurs d'Influence</h2>
+                <p>Principales corrélations avec l'Outcome :</p>
+                <ol>
+                    <li><span class="highlight">Past Accidents :</span> +0.52 (Très significatif)</li>
+                    <li><span class="highlight">Speeding Violations :</span> +0.48</li>
+                    <li><span class="highlight">DUIs (Conduite sous influence) :</span> +0.42</li>
+                    <li><span class="highlight">Annual Mileage :</span> +0.35</li>
+                </ol>
+            </section>
+
+            <!-- Slide 6: Modèles -->
+            <section>
+                <h2>5. Comparaison des Modèles</h2>
+                <p>Évaluation par validation croisée (K-Fold=5) :</p>
+                <table style="font-size: 0.8em;">
+                    <thead>
+                        <tr>
+                            <th>Modèle</th>
+                            <th>Accuracy (Moyenne)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: rgba(0, 209, 178, 0.2);">
+                            <td><strong>Régression Logistique</strong></td>
+                            <td><strong>84.09%</strong></td>
+                        </tr>
+                        <tr>
+                            <td>K-Plus Proches Voisins (KNN)</td>
+                            <td>81.54%</td>
+                        </tr>
+                        <tr>
+                            <td>Perceptron</td>
+                            <td>80.01%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 7: Meilleur Modèle -->
+            <section>
+                <h2>6. Résultats : Régression Logistique</h2>
+                <div class="stats-box">
+                    <ul>
+                        <li><span class="highlight">Accuracy Finale :</span> 83.80% (Test)</li>
+                        <li><span class="highlight">Précision :</span> 74.30%</li>
+                        <li><span class="highlight">Rappel (Recall) :</span> 73.83%</li>
+                        <li><span class="highlight">F1-Score :</span> 74.07%</li>
+                    </ul>
+                </div>
+                <p style="font-size: 0.6em; margin-top: 20px;">Le modèle est stable et ne présente pas de surapprentissage (Ecart Test vs CV < 0.3%).</p>
+            </section>
+
+            <!-- Slide 8: Conclusion -->
+            <section data-background-gradient="linear-gradient(to bottom, #2c3e50, #1a1a1a)">
+                <h2>7. Conclusion</h2>
+                <ul>
+                    <li>Objectif atteint avec une excellente précision de <span class="highlight">84%</span>.</li>
+                    <li>Identification claire des comportements à risque (accidents passés, vitesse).</li>
+                    <li>Pipeline de préparation automatisé et robuste.</li>
+                    <li>Modèle sauvegardé et <span class="highlight">prêt pour la production</span> (Pickle).</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            transition: 'convex'
+        });
+    </script>
+</body>
+</html>
